@@ -13,19 +13,25 @@ function start() {
 }
 
 function recursiveDivision(field, horizontal, min_x, max_x, min_y, max_y) {
-    console.log(field)
+    //console.log(max_x, max_y)
+    console.log("HERE I AM")
     if (horizontal) {
-        if (max_x - min_x <= final_resolution) {
+        console.log("HOR")
+        if (max_x - min_x < 2) {
+            console.log("FINISHED")
             return;
         }
         let random_y = RandomNumberInRange(max_x, max_y)
+        //console.log(random_y)
         horizontalWall(min_x, max_x, random_y, field);
 
         recursiveDivision(field, !horizontal, min_x, max_x, min_y, random_y);
         recursiveDivision(field, !horizontal, min_x, max_x, random_y, max_y);
     }
     else {
-        if (max_y - min_y <= final_resolution) {
+        console.log("VER")
+        if (max_y - min_y < 2) {
+            console.log("FINISHED")
             return;
         }
         let random_x = RandomNumberInRange(min_x, max_x)
@@ -38,6 +44,7 @@ function recursiveDivision(field, horizontal, min_x, max_x, min_y, max_y) {
 
 function horizontalWall(min_x, max_x, y, field) {
     let door = RandomNumberInRange(min_x, max_x);
+    console.log(min_x, max_x)
     for (let x = min_x; x <= max_x; i++) {
         if (x != door) {
             field[x][y] = "w"
