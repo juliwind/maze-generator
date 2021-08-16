@@ -35,8 +35,10 @@ function recursiveDivision(field, horizontal, min_x, max_x, min_y, max_y) {
             random_y++;
         }
         horizontalWall(min_x, max_x, random_y, field);
-        recursiveDivision(field, !horizontal, min_x, max_x, min_y, random_y- 1);
-        recursiveDivision(field, !horizontal, min_x, max_x, random_y + 1, max_y);
+        let dir_1 = isHorizontal(max_x - min_x, (random_y - 1) - min_y);
+        let dir_2 = isHorizontal(max_x - min_x, max_y - (random_y + 1));
+        recursiveDivision(field, dir_1, min_x, max_x, min_y, random_y - 1);
+        recursiveDivision(field, dir_2, min_x, max_x, random_y + 1, max_y);
     }
     else {
         if (max_y - min_y < 2) {
@@ -47,8 +49,10 @@ function recursiveDivision(field, horizontal, min_x, max_x, min_y, max_y) {
             random_x++;
         }
         verticalWall(min_y, max_y, random_x, field);
-        recursiveDivision(field, !horizontal, min_x, random_x - 1, min_y, max_y);
-        recursiveDivision(field, !horizontal, random_x + 1, max_x, min_y, max_y);
+        let dir_3 = isHorizontal((random_x - 1) - min_x, max_y - min_y);
+        let dir_4 = isHorizontal(max_x - (random_x + 1), max_y - min_y);
+        recursiveDivision(field, dir_3, min_x, random_x - 1, min_y, max_y);
+        recursiveDivision(field, dir_4, random_x + 1, max_x, min_y, max_y);
     }
 }
 
