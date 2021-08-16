@@ -39,6 +39,8 @@ function recursiveDivision(field, horizontal, min_x, max_x, min_y, max_y) {
         let dir_2 = isHorizontal(max_x - min_x, max_y - (random_y + 1));
         recursiveDivision(field, dir_1, min_x, max_x, min_y, random_y - 1);
         recursiveDivision(field, dir_2, min_x, max_x, random_y + 1, max_y);
+        //recursiveDivision(field, !horizontal, min_x, max_x, min_y, random_y - 1);
+        //recursiveDivision(field, !horizontal, min_x, max_x, random_y + 1, max_y);
     }
     else {
         if (max_y - min_y < 2) {
@@ -53,6 +55,9 @@ function recursiveDivision(field, horizontal, min_x, max_x, min_y, max_y) {
         let dir_4 = isHorizontal(max_x - (random_x + 1), max_y - min_y);
         recursiveDivision(field, dir_3, min_x, random_x - 1, min_y, max_y);
         recursiveDivision(field, dir_4, random_x + 1, max_x, min_y, max_y);
+        //recursiveDivision(field, !horizontal, min_x, random_x - 1, min_y, max_y);
+        //recursiveDivision(field, !horizontal, random_x + 1, max_x, min_y, max_y);
+
     }
 }
 
@@ -130,4 +135,3 @@ function RandomNumberInRange(min, max) {
     let rNumber = Math.floor(Math.random() * (max - min)) + min;
     return rNumber;
 }
-
